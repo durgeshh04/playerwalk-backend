@@ -32,7 +32,8 @@ export const refreshTokens = usersSchema.table('refresh_tokens', {
   accountId: uuid('account_id')
     .references(() => accounts.id, { onDelete: 'cascade' })
     .notNull(),
-  refreshToken: varchar('refresh_token', { length: 255 }).notNull(),
+  tokenId: varchar('token_id', { length: 255 }).unique().notNull(),
+  tokenHash: varchar('token_hash', { length: 255 }).notNull(),
   expiresAt: timestamp('expires_at').notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });

@@ -8,6 +8,13 @@
       "when": 1773171486548,
       "tag": "0000_quiet_giant_man",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1773345926408,
+      "tag": "0001_chubby_infant_terrible",
+      "breakpoints": true
     }
   ]
 }

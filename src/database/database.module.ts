@@ -1,10 +1,19 @@
 import { Module, Global } from '@nestjs/common';
-import { drizzle } from 'drizzle-orm/postgres-js';
+import { drizzle, PostgresJsQueryResultHKT } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import * as schema from './schema/index';
+import { PgTransaction } from 'drizzle-orm/pg-core';
+import { ExtractTablesWithRelations } from 'drizzle-orm';
 
 export const DRIZZLE = 'DRIZZLE';
 
+export type DrizzleDB = ReturnType<typeof drizzle<typeof schema>>;
+
+export type DrizzleTrx = PgTransaction<
+  PostgresJsQueryResultHKT,
+  typeof schema,
+  ExtractTablesWithRelations<typeof schema>
+>;
 @Global()
 @Module({
   providers: [
